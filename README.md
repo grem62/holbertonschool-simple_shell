@@ -19,7 +19,7 @@ The shell is a program that receives computer commands given by a user from his 
 In the early days of computing, the shell was the only user interface available on a Unix-like system such as Linux. Nowadays and with the arrival of the mouse, all computers use graphical user interfaces (GUI) such as macOS or Windows 10, in addition to command line interfaces (CLI) such as the shell.
 
 
-# Authorized function :ballot_box_with_chec:
+# Authorized function ☑️:
 
 * access (man 2 access)
 * chdir (man 2 chdir)
@@ -78,6 +78,21 @@ hsh main.c shell.c
 ($) exit
 $
 ~~~
+But also in non-interactive mode
+
+~~~c
+$ echo "/bin/ls" | ./hsh
+hsh main.c shell.c test_ls_2
+$
+$ cat test_ls_2
+/bin/ls
+/bin/ls
+$
+$ cat test_ls_2 | ./hsh
+hsh main.c shell.c test_ls_2
+hsh main.c shell.c test_ls_2
+$
+
 # command simple shell:
 
 pwd:
