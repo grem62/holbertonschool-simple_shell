@@ -58,6 +58,12 @@ In the early days of computing, the shell was the only user interface available 
 * wait4 (man 2 wait4)
 * write (man 2 write)
 
+
+## Flowchart
+
+![](https://files.slack.com/files-pri/T0423U1MW21-F053RKJFV0X/79517219-2adbc000-8013-11ea-9835-30bf7c59a41e.jpg)
+
+
 ***
 ## Compilator :space_invader:
 
@@ -106,13 +112,6 @@ ls:
 echo:
 
 # Author project
-
-
-
-
-## Authors
-
-
 
 
 
