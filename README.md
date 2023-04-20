@@ -1,1 +1,1 @@
-Simple shell 
+Description :floppy_disk:
