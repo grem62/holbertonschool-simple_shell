@@ -61,7 +61,7 @@ In the early days of computing, the shell was the only user interface available 
 
 ## Flowchart
 
-![](https://files.slack.com/files-pri/T0423U1MW21-F053RKJFV0X/79517219-2adbc000-8013-11ea-9835-30bf7c59a41e.jpg)
+![](https://i.imgur.com/WcN0ccr.jpg)
 
 
 ***
