@@ -1,0 +1,41 @@
+.TH SIMPLE_SHELL "General Commands Manual"
+
+.SH NAME
+.B simple_shell\fR \- A basic command interpreter
+
+.SH SYNOPSIS
+.B simple_shell\fR [\fIOPTION\fR] [\fIScript_file\fR]
+
+.SH DESCRIPTION
+The \fBsimple_shell\fR is a program that allows the user to enter commands using a keyboard and execute them. The \fBsimple_shell\fR can be used to execute system commands, run scripts, or execute programs.
+
+The \fBsimple_shell\fR executes commands in a shell environment, which is a command-line user interface for interacting with the operating system. It uses the same commands and options as those used in standard Unix/Linux shells.
+
+The \fBsimple_shell\fR can be used to execute scripts, which are files containing a sequence of commands to be executed. Scripts can be executed using the command "simple_shell script_file".
+
+The \fBsimple_shell\fR is capable of handling the following commands:
+- Standard system commands such as cd, ls, rm, mv, etc.
+- Stream redirection commands such as >, <, >>, |
+- Process control commands such as bg, fg, ps, kill, etc.
+
+The \fBsimple_shell\fR also provides features such as command history, auto-completion of commands, and signal management.
+
+.SH OPTIONS
+.TP
+.BR \-h ", " \-\-help
+Display help
+.TP
+.BR \-v ", " \-\-version
+Display version
+
+.SH EXAMPLES
+.B simple_shell\fR
+.BR ls
+.BR cd /home/user
+.BR pwd
+.B simple_shell script.sh
+
+.SH AUTHORS
+The \fBsimple_shell\fR was developed by [Gremont Matheo, Tatare Mickael, Lenne Sebastien].
+
+
