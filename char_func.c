@@ -23,9 +23,10 @@ int _putchar(char c)
 char *_strncpy(char *dest, char *src, int n)
 {
 	int i;
+
 	i = 0;
 
-	while(i < n && *(src + i))
+	while (i < n && *(src + i))
 	{
 		*(dest + i) = *(src + i);
 		i++;
@@ -44,7 +45,7 @@ char *_strncpy(char *dest, char *src, int n)
  * Return: int
  */
 
-int strlen(char *s)
+int _strlen(char *s)
 {
 	int i;
 
@@ -56,7 +57,7 @@ int strlen(char *s)
 }
 
 /**
- * atoi - convert to a int
+ * _atoi - convert to a int
  * @s: string
  * Return: int
  */
@@ -67,7 +68,7 @@ int _atoi(char *s)
 
 	i = n = 0;
 	x = 1;
-	while ((s[i] < '0' || s[i] > '9') &&(s[i] != '\0'))
+	while ((s[i] < '0' || s[i] > '9') && (s[i] != '\0'))
 	{
 		if (s[i] == '-')
 			x *= -1;
@@ -96,6 +97,6 @@ void _puts(char *str)
 	{
 		_putchar(str[i]);
 	}
-	_putchar('\n');
-	return;
+_putchar('\n');
+return;
 }
