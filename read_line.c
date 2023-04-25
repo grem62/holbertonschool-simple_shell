@@ -1,10 +1,10 @@
-#include "main.h"
+#include "shell.h"
 /**
  * read_line - function that read the commande line
  * Return: char*
  */
 // Lit une ligne de texte depuis l'entrée standard (stdin) et renvoie un pointeur vers la chaîne de caractères correspondante
-char *read_line(void)
+	char *read_line(void)
 {
 	// Initialise le pointeur 'line' à NULL et la taille du tampon 'buflen' à 0
 	char *line = NULL;
@@ -24,6 +24,3 @@ char *read_line(void)
 	// Retourne la chaîne de caractères lue depuis l'entrée standard
 	return (line);
 }
-
-
-

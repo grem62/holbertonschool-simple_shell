@@ -1,18 +1,17 @@
 #include "shell.h"
 
 /**
- * path_cmd - Search in $PATH for executable command
- * @cmd: parsed input
- * Return: 0 on success otherwise 1
+ * path_cmd -  Search In $PATH For Excutable Command
+ * @cmd: Parsed Input
+ * Return: 1  Failure  0  Success.
  */
-
 int path_cmd(char **cmd)
 {
-	char *path, *value, cmd_path;
+	char *path, *value, *cmd_path;
 	struct stat buf;
 
-	path = _getenv("PATH")
-		value = _strtok(path, ":");
+	path = _getenv("PATH");
+	value = _strtok(path, ":");
 	while (value != NULL)
 	{
 		cmd_path = build(*cmd, value);
@@ -27,22 +26,22 @@ int path_cmd(char **cmd)
 		value = _strtok(NULL, ":");
 	}
 	free(path);
+
 	return (1);
 }
-
 /**
- * build - build command
- * @token: executable command
- * @value: directory containing command
- * Return: parsed full path od command or NULL case failed
+ * build - Build Command
+ * @token: Excutable Command
+ * @value: Dirctory Conatining Command
+ *
+ * Return: Parsed Full Path Of Command Or NULL Case Failed
  */
-
 char *build(char *token, char *value)
 {
 	char *cmd;
 	size_t len;
 
-	len = _strlen(value) + _strlen(token) + 2;
+	len = strlen(value) + _strlen(token) + 2;
 	cmd = malloc(sizeof(char) * len);
 	if (cmd == NULL)
 	{
@@ -51,32 +50,30 @@ char *build(char *token, char *value)
 
 	memset(cmd, 0, len);
 
-	cmd = _strcat(cmd, value);
-	cmd = _strcat(cmd, "/");
-	cmd = _strcat(cmd, token);
+	cmd = strcat(cmd, value);
+	cmd = strcat(cmd, "/");
+	cmd = strcat(cmd, token);
 
 	return (cmd);
 }
-
 /**
- * _getenv - gets the value of environment variable by name
- * @name: environment variable name
- * Return: the value of the environment variable otwerwise NULL
+ * _getenv - Gets The Value Of Enviroment Variable By Name
+ * @name: Environment Variable Name
+ * Return: The Value of the Environment Variable Else NULL.
  */
-
 char *_getenv(char *name)
 {
-	size_t n1, v1;
+	size_t nl, vl;
 	char *value;
 	int i, x, j;
 
-	n1 = strlen(name);
-	for (i = 0; environ[i]; i++)
+	nl = strlen(name);
+	for (i = 0 ; environ[i]; i++)
 	{
-		if (_strcmp(name, environ[i], n1) == 0)
+		if (strncmp(name, environ[i], nl) == 0)
 		{
-			v1 = _strlen(environ[i]) - n1;
-			value = malloc(sizeof(char) * v1);
+			vl = strlen(environ[i]) - nl;
+			value = malloc(sizeof(char) * vl);
 			if (!value)
 			{
 				free(value);
@@ -85,13 +82,15 @@ char *_getenv(char *name)
 			}
 
 			j = 0;
-			for (x = n1 + 1; environ[i][x]; x++, j++)
+			for (x = nl + 1; environ[i][x]; x++, j++)
 			{
 				value[j] = environ[i][x];
 			}
 			value[j] = '\0';
+
 			return (value);
 		}
 	}
+
 	return (NULL);
 }

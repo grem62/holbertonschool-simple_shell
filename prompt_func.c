@@ -6,6 +6,6 @@
 
 void prompt(void)
 {
-	_putchar('$');
-	_putchar(' ');
+	putchar('$');
+	putchar(' ');
 }

@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 /**
  * SI_INT - functio signal handler
  * @signal  : input
