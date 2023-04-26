@@ -9,9 +9,11 @@ int main(void)
 {
 	while (true) /*Boucle while infinie*/
 	{
+		char *line;
+		char **tokens;
 		printf("$ "); /*Afficher le symbole "$ " */
-		char *line = sshell_read_line();/*Lire la ligne d'entrée de l'utilisateur*/
-		char **tokens = sshell_split_line(line);/*spliter ligne d'entrée*/
+		line = sshell_read_line();/*Lire la ligne d'entrée de l'utilisateur*/
+		tokens = sshell_split_line(line);/*spliter ligne d'entrée*/
 
 		if (tokens[0] != NULL)
 		{

@@ -36,15 +36,12 @@ void shell_exec(char **args)
 	{
 		do {
 			waitpid(child_pid, &status, WUNTRACED);
-		}
-		while
-		{
-			(!WIFEXITED(status) && !WIFSIGNALED(status));
-		}
+		}while(!WIFEXITED(status) && !WIFSIGNALED(status));
+	}
 		else
 		{
 			perror("sshell");
 		}
 /*En cas d'erreur lors de création du processus fils, print message d'erreur*/
-	}
+	
 }

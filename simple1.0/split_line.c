@@ -7,6 +7,9 @@
 **/
 char **sshell_split_line(char *line)
 {
+	char *delimiters = " \t\r\n";
+/*Définition délimiteurs token (espaces, tabulations, sauts de ligne)*/
+	char *token;
 	int length = 0;
 	int capacity = 16;
 /*Allocation initiale de la mémoire pour le tableau de tokens*/
@@ -17,9 +20,7 @@ char **sshell_split_line(char *line)
 		perror("sshell");
 		exit(1);
 	}
-/*Définition délimiteurs token (espaces, tabulations, sauts de ligne)*/
-	char *delimiters = " \t\r\n";
-	char *token = strtok(line, delimiters);
+	token = strtok(line, delimiters);
 /*Récupération du premier token*/
 /*Boucle pour récupérer tous les tokens de la chaîne de caractères*/
 	while (token != NULL)

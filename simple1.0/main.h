@@ -11,16 +11,6 @@
 #include <unistd.h>
 #include <errno.h>
 
-/*====fonction====*/
-void shell_help(char **args);
-void shell_exit(char **args);
-void shell_cd(char **args);
-int sshell_num_builtins(void);
-void shell_exec(char **args);
-char **sshell_split_line(char *line);
-char *sshell_read_line();
-int main(void);
-
 /*====Structure====*/
 
 /**
@@ -30,24 +20,23 @@ int main(void);
 */
 struct builtin
 {
-	char *name;
-	void (*func)(char **args);
+    char *name;
+    void (*func)(char **args);
 };
 
- /*Tableau de commandes intégrées*/
-struct builtin builtins[] = {
-	{"help", shell_help},
-	{"exit", shell_exit},
-	{"cd", shell_cd},
-};
+/*====Variables globales====*/
 
-/**
-*sshell_num_builtins - Renvoie le nombre de commandes enregistrées
-*Return: la taille
-*/
-int sshell_num_builtins(void)
-{
-	return (sizeof(builtins) / sizeof(builtins[0]));
-};
+extern struct builtin builtins[];
+
+/*====fonction====*/
+
+void shell_help(char **args);
+void shell_exit(char **args);
+void shell_cd(char **args);
+int sshell_num_builtins(void);
+void shell_exec(char **args);
+char **sshell_split_line(char *line);
+char* sshell_read_line();
+int main(void);
 
 #endif
