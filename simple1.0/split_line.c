@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 /**
 * sshell_split_line - Splits line into tokens using whitespace as delimiters.
 * @line: Splits line into an array of tokens, using whitespace as delimiters.
