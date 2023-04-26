@@ -6,9 +6,15 @@
 *sshell_num_builtins - Renvoie le nombre de commandes enregistrées
 *Return: la taille
 */
-int sshell_num_builtins(void)
+int sshell_num_builtins()
 {
-    return (sizeof(builtins) / sizeof(builtins[0]));
+    int i;
+    i = 0;
+    while (builtins[i].name != NULL)
+    {
+        i++;
+    }
+    return i;
 }
 
 /*====Implementation des builtins====*/
