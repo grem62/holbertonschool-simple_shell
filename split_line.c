@@ -8,11 +8,11 @@
 char **sshell_split_line(char *line)
 {
 	char *delimiters = " \t\r\n";
-/*Définition délimiteurs token (espaces, tabulations, sauts de ligne)*/
+/* Token delimiters definition (spaces, tabs, line breaks)*/
 	char *token;
 	int length = 0;
 	int capacity = 16;
-/*Allocation initiale de la mémoire pour le tableau de tokens*/
+/* Initial memory allocation for the token array* */
 	char **tokens = malloc(capacity * sizeof(char *));
 
 	if (!tokens)
@@ -21,31 +21,27 @@ char **sshell_split_line(char *line)
 		exit(1);
 	}
 	token = strtok(line, delimiters);
-/*Récupération du premier token*/
-/*Boucle pour récupérer tous les tokens de la chaîne de caractères*/
+/* Retrieving the first token */
+/* Loop to retrieve all tokens in the string*.*/
 	while (token != NULL)
-/*Ajout du token au tableau de tokens*/
+/* Adding the token to the token table */
 	{
 		tokens[length] = token;
 		length++;
-/*Vérif si capacité maximale du tableau a été atteinte*/
+/* Check if the maximum capacity of the array has been reached*/
 		if (length >= capacity)
-/*Si capacité max, réalloc de mém pour tabl de tokens avc nvl capacité*/
+/* if max capacity, realloc of mem for tok tabl with new capacity */
 		{
 			capacity = (int) (capacity * 1.5);
 			tokens = realloc(tokens, capacity * sizeof(char *));
-/*Vérif si la réallocation de la mémoire a réussi*/
-			if (!tokens)
+			if (!tokens) /*check memory */
 			{
 			perror("sshell");
 			exit(1);
 			}
 		}
-	token = strtok(NULL, delimiters);
-/*Récupération du prochain token*/
+	token = strtok(NULL, delimiters); /* take next token */
 	}
-	tokens[length] = NULL;
-/*Ajout d'un dernier élément NULL pour indiquer la fin du tableau de tokens*/
-	return (tokens);
-/*Retour le tableau de tokens sépare*/
+	tokens[length] = NULL; /* add last null element at the end of array */
+	return (tokens); /* return array of token */
 }

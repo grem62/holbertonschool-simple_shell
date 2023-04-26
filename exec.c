@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * shell_exec - Executes a command using a "builtin" or a new process
+ * shell_exec - Executes a command using a builtin or a new process
  * @args: An array of strings representing the command and its arguments
  */
 
@@ -11,7 +11,7 @@ void shell_exec(char **args)
 	pid_t child_pid;
 	int status;
 
-/*Vérification si la commande est un "builtin"*/
+/*Vérification si la commande est un builtin*/
 	for (i = 0; i < sshell_num_builtins(); i++)
 	{
 		if (strcmp(args[0], builtins[i].name) == 0)

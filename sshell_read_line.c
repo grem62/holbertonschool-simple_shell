@@ -6,7 +6,7 @@
 */
 
 
-char* sshell_read_line(void)
+char *sshell_read_line(void)
 {
 	char *line = NULL;/*Initialisation de la chaîne de caractères*/
 	size_t buflen = 0;/*Initialisation de la taille de la chaine*/
@@ -27,7 +27,7 @@ char* sshell_read_line(void)
 		{
 			perror("sshell");
 		}
-			return(NULL); /*Quitter le programme */
+			return (NULL); /*Quitter le programme */
 	}
 	return (line);/*Retourner la chaîne de caractère depuis l'entrée standard*/
 }

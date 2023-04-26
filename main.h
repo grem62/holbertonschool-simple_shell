@@ -20,8 +20,8 @@
 */
 struct builtin
 {
-    char *name;
-    void (*func)(char **args);
+	char *name;
+	void (*func)(char **args);
 };
 
 /*====Variables globales====*/
@@ -36,7 +36,7 @@ void shell_cd(char **args);
 int sshell_num_builtins(void);
 void shell_exec(char **args);
 char **sshell_split_line(char *line);
-char* sshell_read_line();
+char *sshell_read_line(void);
 int main(void);
 
 #endif
