@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * shell_exec - Executes a command using a "builtin" or a new process.
- * @args: An array of strings representing the command and its arguments.
+ * shell_exec - Executes a command using a "builtin" or a new process
+ * @args: An array of strings representing the command and its arguments
  */
 
 void shell_exec(char **args)
@@ -30,18 +30,20 @@ void shell_exec(char **args)
 		perror("sshell");
 		exit(1);
 	}
-/*En cas d'erreur d'exécu, print message d'erreur et fin du processus fils*/
+/*En cas d'erreur d'exec, print message d'erreur et fin du processus fils*/
 	else if (child_pid > 0)
 /* Dans le processus parent, attente de la fin du processus fils*/
 	{
 		do {
 			waitpid(child_pid, &status, WUNTRACED);
-		}while(!WIFEXITED(status) && !WIFSIGNALED(status));
+		}
+
+		while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
 		else
 		{
 			perror("sshell");
 		}
 /*En cas d'erreur lors de création du processus fils, print message d'erreur*/
-	
+
 }
