@@ -14,17 +14,18 @@
 /*====Structure====*/
 
 /**
- * struct builtin - Structure pour la gestion des commandes shell intégrées.
- * @name: Le nom de la commande.
- * @func: Un pointeur vers la fonction qui implémente la commande.
+ * struct builtin - Structure for handling builtin shell commands.
+ * @name: name of the built-in command
+ * @func: pointer to the built-in command function
  *
- * Description : Cette structure contient les info pour chaque cmd shell intégrée.
+ * Description: This structure defines a built-in shell command.
  */
-struct builtin
+ struct builtin
 {
 	char *name;
 	void (*func)(char **args);
 };
+
 
 /*====Variables globales====*/
 /**
@@ -42,6 +43,7 @@ void shell_help(char **args);
 void shell_exit(char **args);
 void shell_cd(char **args);
 int sshell_num_builtins(void);
+int shell_execute_external(char **args);
 int shell_exec(char **args);
 char **sshell_split_line(char *line);
 char *sshell_read_line(void);

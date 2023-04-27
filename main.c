@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * main - entry point
+ * main - point d'entrée
  *
- * Return: void
+ * Return: 0 si tout est exécuté correctement
  */
 int main(void)
 {
@@ -22,11 +22,11 @@ int main(void)
 			if (tokens[0] != NULL)
 			{
 				shell_exec(tokens); /* Exécuter la commande avec shell_exec */
-				if (strcmp(tokens[0], "exit") == 0) /* Vérifier si  commande "exit" */
+				if (strcmp(tokens[0], "exit") == 0) /*check si la commande est "exit" */
 				{
 					free(tokens); /* Libérer la mémoire allouée pour "tokens" */
 					free(line); /* free la mémoire allouée pour la chaîne de caractères */
-					break; /* Sortir de la boucle infinie avec la commande "exit" */
+					return (0); /* Terminer le programme */
 				}
 			}
 
