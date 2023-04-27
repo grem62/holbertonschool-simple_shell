@@ -15,8 +15,20 @@ The \fBsimple_shell\fR can be used to execute scripts, which are files containin
 
 The \fBsimple_shell\fR is capable of handling the following commands:
 - Standard system commands such as cd, ls, rm, mv, etc.
-- Stream redirection commands such as >, <, >>, |
-- Process control commands such as bg, fg, ps, kill, etc.
+
+.SH BUILT-IN COMMANDS
+
+	ls                list about FILEs and directories (in the current directory by default).
+
+	cd [directory]    Changes the current directory to "directory". If "directory" is not specified, changes the current directory to the default directory.
+
+	echo [string]     Displays "string" on the standard output.
+
+	exit [code]       Terminates the simple_shell with the exit status "code". If "code" is not specified, the default exit status is 0.
+
+	pwd               Displays the current directory.
+
+	env               Displays the current environment variables.
 
 The \fBsimple_shell\fR also provides features such as command history, auto-completion of commands, and signal management.
 
@@ -35,7 +47,9 @@ Display version
 .BR pwd
 .B simple_shell script.sh
 
+.SH ERRORS
+     Syntax and execution errors are reported to the user, and detailed error messages are displayed to help the user diagnose issues.
+
+
 .SH AUTHORS
 The \fBsimple_shell\fR was developed by [Gremont Matheo, Tatare Mickael, Lenne Sebastien].
-
-

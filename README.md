@@ -1,4 +1,3 @@
-
 # Simple shell :computer:
 
 
@@ -17,6 +16,7 @@
 The shell is a program that receives computer commands given by a user from his keyboard and sends them to the operating system, which will then execute them.
 
 In the early days of computing, the shell was the only user interface available on a Unix-like system such as Linux. Nowadays and with the arrival of the mouse, all computers use graphical user interfaces (GUI) such as macOS or Windows 10, in addition to command line interfaces (CLI) such as the shell.
+Here we have coded a simple shell that was asked in the holberton school curriculum.
 
 
 # Authorized function ☑️:
@@ -63,6 +63,16 @@ In the early days of computing, the shell was the only user interface available 
 
 ![](https://i.imgur.com/WcN0ccr.jpg)
 
+`Prompt`: A common implementation of this feature is to present the user with a command prompt to solicit their participation
+
+`Get line`: The purpose of this function is to capture a line of user input and convert it into a string format for further processing
+
+`Split line`: The goal of this function is to separate the first string being the command thanks to a delimiter to be able to read the next string which will be an option of this command 
+
+`Exec command`: The main purpose of this function is to determine whether the current process has permission to access a specific file or directory. Two parameters must be passed to it: the name of the file and the access mode to be checked (read, write or execute).
+
+`Free memory`: The free function allows to free the memory and avoid memory leaks
+
 
 ***
 ## Compilator :space_invader:
@@ -101,15 +111,15 @@ $
 ~~~
 ***
 
-# command simple shell:
+# basic command simple shell:
 
-pwd:
+pwd: The pwd command means to print the working directory. It is one of the most basic and frequently used commands in Linux
 
-cd:
+cd:  Displays the name of the current directory or changes the current directory. If used with a drive letter only (for example, cd C:), cd displays the name of the active directory in the specified drive. If used without parameters, cd displays the active drive and directory
 
-ls:
+ls: Ls is one of the basic commands that every Linux user should know. The ls command lists the files and directories in the file system and displays detailed information about them
 
-echo:
+echo: The echo command in Linux is used to display the line of text/strings that is passed as an argument
 
 # Author project
 
@@ -133,9 +143,3 @@ echo:
 - [@Gremont Matheo](https://github.com/grem62)
 
 ![](https://ca.slack-edge.com/T0423U1MW21-U04NC00H4JU-adedd0d861f8-192)
-
-
-
-
-
-
