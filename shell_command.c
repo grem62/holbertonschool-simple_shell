@@ -8,9 +8,7 @@
 */
 int sshell_num_builtins(void)
 {
-	int i;
-
-	i = 0;
+	int i = 0;
 
 	while (builtins[i].name != NULL)
 	{

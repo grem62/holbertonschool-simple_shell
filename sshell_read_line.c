@@ -29,5 +29,18 @@ char *sshell_read_line(void)
 		}
 			return (NULL); /*Quitter le programme */
 	}
+/* si la ligne est vide ou ne contient que des espaces, renvoyer NULL */
+		if (len == 1 && line[0] == ' ')
+		{
+		free(line); /* libération de la mémoire allouée par malloc() */
+		return (NULL); /* sortie de la fonction sans erreur */
+		}
+
+/* vérification si la mémoire a été allouée correctement */
+	if (line == NULL)
+	{
+	perror("malloc");
+	return (NULL); /* sortie de la fonction avec une erreur */
+	}
 	return (line);/*Retourner la chaîne de caractère depuis l'entrée standard*/
 }
