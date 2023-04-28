@@ -1,16 +1,4 @@
-#include "main.h"
 
- /**
- * builtin builtins- structure  for handling built-in shell commands.
- * @shell_help: pointer to the help function.
- * @shell_exit: pointer to the exit function.
- * @shell_cd: pointer to the cd function.
- */
-struct builtin builtins[] = {
-	{"help", shell_help},
-	{"exit", shell_exit},
-	{"cd", shell_cd}
-};
 
 /*====Implémentation des fonctions utilitaires====*/
 
