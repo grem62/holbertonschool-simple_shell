@@ -13,8 +13,8 @@ int main(void)
 	do
 
 	{
-		if (isatty(STDIN_FILENO))
-			printf("$ ");
+		if (&isatty != NULL)
+                write(STDOUT_FILENO, "$ ", 1);
 
 		else
 		{
