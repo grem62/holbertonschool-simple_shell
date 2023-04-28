@@ -20,12 +20,15 @@
  *
  * Description: This structure defines a built-in shell command.
  */
-struct builtin
+  struct builtin 
 {
 	char *name;
 	void (*func)(char **args);
 };
 
+/*====Variables globales====*/
+
+extern struct builtin builtins[];
 
 /*====fonction====*/
 

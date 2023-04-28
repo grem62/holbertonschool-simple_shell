@@ -1,48 +1,48 @@
 #include "main.h"
 
 /**
- * sshell_read_line - fonction permet de lire la lige écrite par l'utilisateur
- * Return: la ligne tapée par l'utilisateur
+ * sshell_split_line - Splits line into tokens using whitespace as delimiters.
+ * @line: Splits line into an array of tokens, using whitespace as delimiters.
+ * Dynamically resizes to fit any number of tokens.
+ * Return: A dynamic alloc array of strings, with the final element being NULL.
  */
-
-char *sshell_read_line(void)
+char **sshell_split_line(char *line)
 {
-	char *line = NULL; /* Initialisation de la chaîne de caractères */
-	size_t buflen = 0; /* Initialisation de la taille de la chaîne */
-	ssize_t len = 0;
+	char *delimiters = " \t\r\n";
+	/* Token delimiters definition (spaces, tabs, line breaks)*/
+	char *token;
+	int length = 0;
+	int capacity = 16;
+	/* Initial memory allocation for the token array */
+	char **tokens = malloc(capacity * sizeof(char *));
 
-	errno = 0; /* Réinitialiser la variable errno à 0 */
-
-	/* Utiliser la fonct getline pour lire la ligne entrée par l'utili */
-	/* et stocker la chaîne de caractères dans la variable line */
-
-	len = getline(&line, &buflen, stdin);
-
-	/* Vérifier si getline() a retourné une erreur */
-
-	if (len < 0)
+	if (!tokens)
 	{
-		if (errno)
+		perror("sshell");
+		exit(1);
+	}
+	token = strtok(line, delimiters);
+	/* Retrieving the first token */
+	/* Loop to retrieve all tokens in the string. */
+	while (token != NULL)
+	{
+		/* Adding the token to the token table */
+		tokens[length] = token;
+		length++;
+		/* Check if the maximum capacity of the array has been reached */
+		if (length >= capacity)
 		{
-			perror("sshell");
+			capacity = (int)(capacity * 1.5);
+			tokens = realloc(tokens, capacity * sizeof(char *));
+			if (!tokens)
+			{
+				perror("sshell");
+				exit(1);
+			}
 		}
-		free(line); /* Libération de la mémoire allouée par getline() */
-		return (NULL); /* Quitter la fonction avec une erreur */
+		token = strtok(NULL, delimiters); /* take next token */
 	}
-
-	/* Si la ligne est vide ou ne contient que des espaces, renvoyer NULL */
-	if (len == 1 && line[0] == ' ')
-	{
-		free(line); /* Libération de la mémoire allouée par getline() */
-		return (NULL); /* Sortie dela fonction sans erreur */
-	}
-
-	/* Vérification si la mémoire a été allouée correctement */
-	if (line == NULL)
-	{
-		perror("malloc");
-		return (NULL); /* Sortie de la fonction avec une erreur */
-	}
-
-	return (line); /* Return la chaîne de caractères lue */
+	tokens[length] = NULL; /* add last null element at the end of array */
+	return (tokens); /* return array of token */
 }
+
