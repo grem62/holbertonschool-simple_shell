@@ -7,13 +7,14 @@
 
 int main(void)
 {
+	char *line;
+	char **tokens = NULL;
+	
 	while (true) /*Boucle while infinie*/
 	{
-		char *line;
-		char **tokens = NULL;
-					write(STDOUT_FILENO, "$ ", 2);
+		
 		line = sshell_read_line();/*Lire la ligne d'entrée de l'utilisateur*/
-			
+
 		tokens = sshell_split_line(line);/*spliter ligne d'entrée*/
 
 
@@ -23,6 +24,6 @@ int main(void)
 		}
 
 		free(tokens);/*Libérer la mémoire allouée pour "tokens"*/
-		free(line);/*Libérer la mémoire allouée pour la chaîne de caractères*/
+		free(line);/*Libérer la mémoire allouée pour la chaîne de caractère*/
 	}
 }
