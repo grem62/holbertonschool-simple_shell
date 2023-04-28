@@ -11,7 +11,7 @@ int main(void)
 	{
 		char *line;
 		char **tokens = NULL;
-		printf("$ "); /*Afficher le symbole "$ " */
+					write(STDOUT_FILENO, "$ ", 2);
 		line = sshell_read_line();/*Lire la ligne d'entrée de l'utilisateur*/
 			
 		tokens = sshell_split_line(line);/*spliter ligne d'entrée*/
