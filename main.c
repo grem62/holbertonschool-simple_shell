@@ -13,8 +13,8 @@ int main(void)
 	do
 
 	{
-		if (&isatty != NULL)
-                write(STDOUT_FILENO, "$ ", 1);
+		if (isatty(STDIN_FILENO))
+			printf("$ ");
 
 		else
 		{
@@ -29,11 +29,13 @@ int main(void)
 
 		ln = getln();
 		command = formatln(ln);
-         if (feof(stdin))
+		
+		if (feof(stdin))
         {
             exit(EXIT_SUCCESS);
         }
-        if (*command == NULL)
+
+		if (*command == NULL)
 		{
 			free(ln);
 			free(command);
