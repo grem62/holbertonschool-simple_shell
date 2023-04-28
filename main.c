@@ -7,14 +7,16 @@
 
 int main(void)
 {
-	char line[MAX_INPUT_LENGTH];
+	char *line;
 	char **tokens = NULL;
-
+	
+	write(STDOUT_FILENO, "$ ", 1);
 
 	while (true) /*Boucle while infinie*/
 	{
-		write(STDOUT_FILENO, "$ ", 1);
-		if (fgets(line, MAX_INPUT_LENGTH, stdin) == NULL) /* Lire la ligne d'entrée de l'utilisateur */
+		line = sshell_read_line();/*Lire la ligne d'entrée de l'utilisateur*/
+
+		if (line == NULL)
 			continue;
 
 		tokens = sshell_split_line(line);/*spliter ligne d'entrée*/
