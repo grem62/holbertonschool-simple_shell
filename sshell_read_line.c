@@ -9,7 +9,7 @@
 char* sshell_read_line(void)
 {
 	char *line = NULL;/*Initialisation de la chaîne de caractères*/
-	size_t buflen = 0;/*Initialisation de la taille de la chaine*/
+	size_t buflen = 155;/*Initialisation de la taille de la chaine*/
 	ssize_t len = 0;
 
 	errno = 0;/*Réinitialiser la variable errno à 0*/
