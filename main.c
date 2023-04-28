@@ -12,13 +12,19 @@ int main(void)
 	
 	while (true) /*Boucle while infinie*/
 	{
-		char *line;
+		char *line = NULL;
 		char **tokens = NULL;
 					write(STDOUT_FILENO, "$ ", 2);
 		line = sshell_read_line();/*Lire la ligne d'entrée de l'utilisateur*/
+		if (line == NULL)
+			continue;
 
 		tokens = sshell_split_line(line);/*spliter ligne d'entrée*/
-
+		if (tokens == NULL)
+		{
+			free(line);
+			continue;
+		}
 
 		if (tokens[0] != NULL)
 		{
