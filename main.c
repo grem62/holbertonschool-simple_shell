@@ -12,7 +12,7 @@ int main(void)
 	
 	while (true) /*Boucle while infinie*/
 	{
-		if (isatty(STDIN_FILENO))
+		if (&isatty != NULL)
                 write(STDOUT_FILENO, "$ ", 1);
 
 		line = sshell_read_line();/*Lire la ligne d'entrée de l'utilisateur*/
