@@ -32,6 +32,8 @@ char* sshell_read_line(void)
 			perror("sshell");
 		}
 			return(NULL); /*Quitter le programme */
+	
+	line[len - 1] =  '\0';
 	}
-	return (line);/*Retourner la chaîne de caractère depuis l'entrée standard*/
+return (line);/*Retourner la chaîne de caractère depuis l'entrée standard*/
 }
