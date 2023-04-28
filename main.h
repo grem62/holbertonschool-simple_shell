@@ -1,43 +1,18 @@
-#ifndef MAIN_H
-#define MAIN_H
-#define MAX_INPUT_LENGTH 1024
-
-/*====Bibliotheques====*/
-
-#include <stdbool.h>
+#ifndef main_h
+#define main_h
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/wait.h>
 #include <unistd.h>
-#include <errno.h>
-
-/*====Structure====*/
-
-/**
- *struct builtin - structure gestionnaire de commande
- *@name: nom de la commande
- *@func: function pouvant être utilisé
-*/
-struct builtin
-{
-    char *name;
-    void (*func)(char **args);
-};
-
-/*====Variables globales====*/
-
-extern struct builtin builtins[];
-
-/*====fonction====*/
-
-void shell_help(char **args);
-void shell_exit(char **args);
-void shell_cd(char **args);
-int sshell_num_builtins(void);
-void shell_exec(char **args);
-char **sshell_split_line(char *line);
-char* sshell_read_line(void);
-int main(void);
-
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <sys/wait.h>
+extern char **environ;
+char *getln(void);
+char **formatln(char *ln);
+char *compose(char *token, char *val);
+int launch_process(char **command);
+void search_exe(char **command);
+char *_getenv(char *name);
+void handler_function(int i);
 #endif
