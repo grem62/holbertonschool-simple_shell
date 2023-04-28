@@ -8,40 +8,44 @@
  */
 char **sshell_split_line(char *line)
 {
-	char *delimiters = " \t\r\n";
-	/* Token delimiters definition (spaces, tabs, line breaks)*/
-	char *token;
-	int length = 0;
-	int capacity = 16;
-	/* Initial memory allocation for the token array */
-	char **tokens = malloc(capacity * sizeof(char *));
-
-	if (!tokens)
-	{
-		perror("sshell");
-		exit(1);
-	}
-	token = strtok(line, delimiters);
-	/* Retrieving the first token */
-	/* Loop to retrieve all tokens in the string. */
-	while (token != NULL)
-	{
-		/* Adding the token to the token table */
-		tokens[length] = token;
-		length++;
-		/* Check if the maximum capacity of the array has been reached */
-		if (length >= capacity)
-		{
-			capacity = (int)(capacity * 1.5);
-			tokens = realloc(tokens, capacity * sizeof(char *));
-			if (!tokens)
-			{
-				perror("sshell");
-				exit(1);
-			}
-		}
-		token = strtok(NULL, delimiters); /* take next token */
-	}
-	tokens[length] = NULL; /* add last null element at the end of array */
-	return (tokens); /* return array of token */
+    const char *delimiters = " \t\r\n";
+    /* Définition des délimiteurs de tokens (espaces, tabulations, sauts de ligne) */
+    char *token;
+    int length = 0;
+    int capacity = 16;
+    /* Allocation initiale de mémoire pour le tableau de tokens */
+    char **tokens = malloc(capacity * sizeof(char *));
+    if (!tokens)
+    {
+        perror("sshell");
+        exit(1);
+    }
+    token = strtok(line, delimiters);
+    /* Récupération du premier token */
+    /* Boucle pour récupérer tous les tokens dans la chaîne */
+    while (token != NULL)
+    {
+        /* Ajout du token au tableau de tokens */
+        tokens[length] = strdup(token);
+        if (!tokens[length])
+        {
+            perror("sshell");
+            exit(1);
+        }
+        length++;
+        /* Vérification si la capacité maximale du tableau a été atteinte */
+        if (length >= capacity)
+        {
+            capacity *= 2;
+            tokens = realloc(tokens, capacity * sizeof(char *));
+            if (!tokens)
+            {
+                perror("sshell");
+                exit(1);
+            }
+        }
+        token = strtok(NULL, delimiters); /* Récupération du token suivant */
+    }
+    tokens[length] = NULL; /* Ajout d'un dernier élément nul à la fin du tableau */
+    return tokens; /* Retourne le tableau de tokens */
 }

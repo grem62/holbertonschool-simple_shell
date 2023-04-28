@@ -7,30 +7,40 @@
  */
 int shell_execute_external(char **args)
 {
-	int status;
-	pid_t child_pid;
+    int status;
+    int i = 0;
+    pid_t child_pid;
 
-	child_pid = fork();
-	if (child_pid == 0)
-	{
-		execvp(args[0], args);
-		perror("sshell");
-		exit(1);
-	}
-	else if (child_pid > 0)
-	{
-		do {
-			waitpid(child_pid, &status, WUNTRACED);
-		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
-	}
-	else
-	{
-		perror("sshell");
-		return (1);
-	}
+    child_pid = fork();
+    if (child_pid == 0)
+    {
+        execvp(args[0], args);
+        perror("sshell");
+        exit(1);
+    }
+    else if (child_pid > 0)
+    {
+        do {
+            waitpid(child_pid, &status, WUNTRACED);
+        } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+    }
+    else
+    {
+        perror("sshell");
+        return (1);
+    }
 
-	return (0);
+    
+    while (args[i] != NULL) // libérer la mémoire allouée pour chaque élément de args
+    {
+        free(args[i]);
+        i++;
+    }
+    free(args); // libérer la mémoire allouée pour le tableau de pointeurs
+
+    return (0);
 }
+
 
 /**
  * shell_exec - Executes a command using a builtin or a new process
