@@ -12,8 +12,9 @@ int main(void)
 	
 	while (true) /*Boucle while infinie*/
 	{
-		write(STDOUT_FILENO, "$ ", 1);
-		line = sshell_read_line();/*Lire la ligne d'entrée de l'utilisateur*/
+		printf("$ "); /* afficher "$" */
+    		fflush(stdout); /* vider le tampon de sortie*/
+    		line = sshell_read_line();/*Lire la ligne d'entrée de l'utilisateur*/
 
 		if (line == NULL)
 			continue;
