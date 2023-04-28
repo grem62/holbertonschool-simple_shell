@@ -19,7 +19,6 @@ char *sshell_read_line(void)
         {
             exit(EXIT_SUCCESS);
         }
-            free(line);
             
         /* Sinon, afficher une erreur */
         perror("getline");
