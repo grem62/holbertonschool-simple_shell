@@ -11,7 +11,7 @@ char **sshell_split_line(char *line)
 /*Définition délimiteurs token (espaces, tabulations, sauts de ligne)*/
 	char *token;
 	int length = 0;
-	int capacity = 16;
+	int capacity = 15;
 /*Allocation initiale de la mémoire pour le tableau de tokens*/
 	char **tokens = malloc(capacity * sizeof(char *));
 
