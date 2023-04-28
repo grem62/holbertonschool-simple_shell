@@ -1,5 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
+#define MAX_INPUT_LENGTH 1024
 
 /*====Bibliotheques====*/
 

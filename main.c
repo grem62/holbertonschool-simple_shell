@@ -7,22 +7,19 @@
 
 int main(void)
 {
-	char *line;
+	char line[MAX_INPUT_LENGTH];
 	char **tokens = NULL;
-	
+
+
 	while (true) /*Boucle while infinie*/
 	{
-		printf("$ "); /* afficher "$" */
-    		fflush(stdout); /* vider le tampon de sortie*/
-    		line = sshell_read_line();/*Lire la ligne d'entrée de l'utilisateur*/
-
-		if (line == NULL)
+		write(STDOUT_FILENO, "$ ", 1);
+		if (fgets(line, MAX_INPUT_LENGTH, stdin) == NULL) /* Lire la ligne d'entrée de l'utilisateur */
 			continue;
 
 		tokens = sshell_split_line(line);/*spliter ligne d'entrée*/
 		if (tokens == NULL)
 		{
-			free(line);
 			continue;
 		}
 
@@ -32,6 +29,5 @@ int main(void)
 		}
 
 		free(tokens);/*Libérer la mémoire allouée pour "tokens"*/
-		free(line);/*Libérer la mémoire allouée pour la chaîne de caractère*/
 	}
 }
