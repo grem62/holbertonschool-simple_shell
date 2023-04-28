@@ -8,9 +8,6 @@ char *sshell_read_line(void)
     size_t bufsize = 0;
     ssize_t len;
 
-    /* Afficher le prompt */
-    write(STDOUT_FILENO, "$ ", 2);
-
     /* Lire la ligne d'entrée */
     len = getline(&line, &bufsize, stdin);
 
