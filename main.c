@@ -10,7 +10,7 @@ int main(void)
 	char *line;
 	char **tokens = NULL;
 	
-	write(STDOUT_FILENO, "bonjour,", 8);
+	write(STDOUT_FILENO, "$ ,", 2);
 
 	while (true) /*Boucle while infinie*/
 	{
