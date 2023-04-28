@@ -1,39 +1,52 @@
 #include "main.h"
 
-/**
- *sshell_read_line - fonction permet de lire la lige écrit par l'utilisateur
- *Return: la ligne tapé par l'utilisateur
-*/
 
 
-char* sshell_read_line(void)
+char *sshell_read_line(void)
 {
-	char *line = NULL;/*Initialisation de la chaîne de caractères*/
-	size_t buflen = 155;/*Initialisation de la taille de la chaine*/
-	ssize_t len = 0;
+    char *line = NULL;
+    size_t bufsize = 0;
+    ssize_t nread;
 
-	errno = 0;/*Réinitialiser la variable errno à 0*/
+    /* Afficher le prompt */
+    write(STDOUT_FILENO, "$ ", 2);
 
-	/*Utiliser la fonction getline pour lire la ligne entrée par l'utilisateur*/
-	/* et stocker la chaîne de caractères dans la variable line*/
+    /* Lire la ligne d'entrée */
+    nread = getline(&line, &bufsize, stdin);
 
-	len = getline(&line, &buflen, stdin);
-			if (len == EOF)
-			{
-				free(line);
-				exit(0);
-			}
-	/*Vérifier si getline() a retourné une erreur*/
+    /* Vérifier si une erreur s'est produite */
+    if (nread == -1)
+    {
+        /* Si la fin de fichier est atteinte, quitter le programme */
+        if (feof(stdin))
+        {
+            exit(EXIT_SUCCESS);
+        }
+        /* Sinon, afficher une erreur */
+        perror("getline");
+        exit(EXIT_FAILURE);
+    }
 
-	if (len < 0)
-	{
-		if (errno)
-		{
-			perror("sshell");
-		}
-			return(NULL); /*Quitter le programme */
-	
-	line[len - 1] =  '\0';
-	}
-return (line);/*Retourner la chaîne de caractère depuis l'entrée standard*/
+    /* Supprimer le retour à la ligne final si présent */
+    if (nread > 0 && line[nread - 1] == '\n')
+    {
+        line[nread - 1] = '\0';
+    }
+
+    return line;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
